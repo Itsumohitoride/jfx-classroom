@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="514.0" style="-fx-background-color: E6B8F5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Join to Classroom">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="217.0" top="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Create your account">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="175.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <VBox prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Username:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="120.0" top="-90.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Password:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="120.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Profile Photo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="90.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Gender:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="134.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Male">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="200.0" top="-23.0" />
+               </VBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="Gender" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$Gender">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="265.0" top="-21.0" />
+               </VBox.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Other" toggleGroup="$Gender">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="345.0" top="-21.0" />
+               </VBox.margin>
+            </RadioButton>
+            <Label text="Career:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="140.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+            <CheckBox mnemonicParsing="false" text="Sofware Engineering">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="205.0" top="-23.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Telematic Engineering">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="6.0" left="205.0" />
+               </VBox.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Industrial Engineering">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="205.0" />
+               </VBox.margin>
+            </CheckBox>
+            <Label text="Birthday:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="127.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker>
+               <VBox.margin>
+                  <Insets left="205.0" right="-50.0" top="-25.0" />
+               </VBox.margin>
+            </DatePicker>
+            <Label text="Favorite Browser:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="60.0" top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="txtUserName">
+               <VBox.margin>
+                  <Insets left="-195.0" right="130.0" top="-88.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtPassword">
+               <VBox.margin>
+                  <Insets left="-195.0" right="130.0" top="12.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="txtPhoto">
+               <VBox.margin>
+                  <Insets left="-195.0" right="130.0" top="13.0" />
+               </VBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Browse">
+               <VBox.margin>
+                  <Insets left="-17.0" top="-29.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <ComboBox prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="-195.0" top="165.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button mnemonicParsing="false" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Create account">
+               <VBox.margin>
+                  <Insets left="-140.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Sing In">
+               <VBox.margin>
+                  <Insets left="-280.0" top="-45.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
