@@ -62,7 +62,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Sign Up">
+            <Button mnemonicParsing="false" onAction="#loadRegister" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Sign Up">
                <HBox.margin>
                   <Insets left="190.0" />
                </HBox.margin>
@@ -73,7 +73,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="logInBotton" mnemonicParsing="false" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Log In">
+            <Button mnemonicParsing="false" onAction="#logInBotton" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Log In">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>

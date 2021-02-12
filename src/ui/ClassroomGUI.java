@@ -9,9 +9,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -22,12 +30,54 @@ public class ClassroomGUI {
 	
     @FXML
     private BorderPane mainPanel;
+    
+    @FXML
+    private TextField txtUserSing;
+
+    @FXML
+    private TextField txtPasswordSing;
 	
 	@FXML
     private Label labelNameUser;
 
     @FXML
     private ImageView userPhoto;
+    
+    @FXML
+    private RadioButton genderMale;
+
+    @FXML
+    private ToggleGroup Gender;
+
+    @FXML
+    private RadioButton genderFemale;
+
+    @FXML
+    private RadioButton genderOther;
+
+    @FXML
+    private CheckBox careerSofware;
+
+    @FXML
+    private CheckBox careerTelematic;
+
+    @FXML
+    private CheckBox careerIndustrial;
+
+    @FXML
+    private DatePicker txtBirthDay;
+
+    @FXML
+    private TextField txtUsername;
+
+    @FXML
+    private TextField txtPassword;
+
+    @FXML
+    private TextField txtPhoto;
+
+    @FXML
+    private ComboBox<?> txtFavoriteBrowser;
 
     @FXML
     private TableView<UserAccount> tableViewUserAccount;
@@ -58,10 +108,6 @@ public class ClassroomGUI {
 		classroom = cr;
 	}
 	
-	public void initializate() {
-		
-	}
-	
 	private void initializateTableView() {
 		
 		ObservableList<UserAccount> observableList;
@@ -75,7 +121,7 @@ public class ClassroomGUI {
 		tableViewBrowser.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("browser"));
 	}
 	
-	public void loadLogin(ActionEvent event) throws IOException{
+	public void loadLogin() throws IOException{
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
 		
@@ -97,7 +143,7 @@ public class ClassroomGUI {
 		mainPanel.setTop(registerAccount);
 	}
 	
-	public void loadAccountList(ActionEvent event) throws IOException{
+	public void loadAccountList() throws IOException{
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
 		
@@ -109,17 +155,48 @@ public class ClassroomGUI {
 		initializateTableView();
 	}
 	
-	public void logInBotton(ActionEvent event) {
+	public void logInBotton(ActionEvent event) throws IOException {
 		
 		boolean verific = false;
 		
-		for(int i = 0; i<2 && !verific; i++) {
+		if(txtUserSing.getText().equals("") || txtPasswordSing.getText().equals("")) {
+				
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Validation Error");
+			alert.setHeaderText(null);
+			alert.setContentText("All fields must be filled");
 			
+			alert.showAndWait();
 		}
-		
+		else if(!txtUserSing.getText().equals("") || !txtPasswordSing.getText().equals("")) {
+			
+			verific = classroom.searchUser(txtUserSing.getText(), txtPasswordSing.getText());
+			
+			if(!verific) {
+				
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Log in incorrect");
+				alert.setHeaderText(null);
+				alert.setContentText("The username and password given are incorrect");
+				
+				alert.showAndWait();
+			}
+			else if(verific) {
+				loadAccountList();
+			}
+		}
 	}
 	
-	public void signUpBotton(ActionEvent event) {
+	public void createAccount(ActionEvent event) {
 		
+		if(txtUsername.getText().equals("") || txtPassword.getText().equals("") || txtPhoto.getText().equals("") || (!genderMale.isSelected() && !genderFemale.isSelected())) {
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Validation Error");
+			alert.setHeaderText(null);
+			alert.setContentText("All fields must be filled");
+			
+			alert.showAndWait();
+		}
 	}
 }

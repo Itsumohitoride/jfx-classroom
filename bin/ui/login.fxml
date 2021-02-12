@@ -46,12 +46,12 @@
    <right>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField>
+            <TextField fx:id="txtUserSing">
                <VBox.margin>
                   <Insets left="-250.0" right="170.0" top="45.0" />
                </VBox.margin>
             </TextField>
-            <TextField>
+            <TextField fx:id="txtPasswordSing">
                <VBox.margin>
                   <Insets left="-250.0" right="170.0" top="25.0" />
                </VBox.margin>
@@ -62,7 +62,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Sing Up">
+            <Button mnemonicParsing="false" onAction="#loadRegister" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Sign Up">
                <HBox.margin>
                   <Insets left="190.0" />
                </HBox.margin>
@@ -73,7 +73,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button mnemonicParsing="false" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Log In">
+            <Button mnemonicParsing="false" onAction="#logInBotton" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Log In">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
