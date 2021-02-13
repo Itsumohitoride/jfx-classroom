@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane style="-fx-background-color: E6B8F5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="479.0" prefWidth="510.0" style="-fx-background-color: E6B8F5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox prefHeight="503.0" prefWidth="514.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <children>
             <Label text="Join to Classroom">
                <font>
@@ -65,7 +65,7 @@
                   <Insets left="134.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <RadioButton mnemonicParsing="false" text="Male">
+            <RadioButton fx:id="genderMale" mnemonicParsing="false" text="Male">
                <font>
                   <Font size="15.0" />
                </font>
@@ -76,7 +76,7 @@
                   <ToggleGroup fx:id="Gender" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$Gender">
+            <RadioButton fx:id="genderFemale" mnemonicParsing="false" text="Female" toggleGroup="$Gender">
                <font>
                   <Font size="15.0" />
                </font>
@@ -84,7 +84,7 @@
                   <Insets left="265.0" top="-21.0" />
                </VBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Other" toggleGroup="$Gender">
+            <RadioButton fx:id="genderOther" mnemonicParsing="false" text="Other" toggleGroup="$Gender">
                <font>
                   <Font size="15.0" />
                </font>
@@ -100,7 +100,7 @@
                   <Insets left="140.0" top="10.0" />
                </VBox.margin>
             </Label>
-            <CheckBox mnemonicParsing="false" text="Sofware Engineering">
+            <CheckBox fx:id="careerSofware" mnemonicParsing="false" text="Sofware Engineering">
                <font>
                   <Font size="15.0" />
                </font>
@@ -108,7 +108,7 @@
                   <Insets bottom="6.0" left="205.0" top="-23.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Telematic Engineering">
+            <CheckBox fx:id="careerTelematic" mnemonicParsing="false" text="Telematic Engineering">
                <font>
                   <Font size="15.0" />
                </font>
@@ -116,7 +116,7 @@
                   <Insets bottom="6.0" left="205.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox mnemonicParsing="false" text="Industrial Engineering">
+            <CheckBox fx:id="careerIndustrial" mnemonicParsing="false" text="Industrial Engineering">
                <font>
                   <Font size="15.0" />
                </font>
@@ -132,7 +132,7 @@
                   <Insets left="127.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <DatePicker>
+            <DatePicker fx:id="birthDay">
                <VBox.margin>
                   <Insets left="205.0" right="-50.0" top="-25.0" />
                </VBox.margin>
@@ -168,7 +168,7 @@
                   <Insets left="210.0" right="130.0" top="12.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="favoriteBrowser" prefWidth="150.0">
                <VBox.margin>
                   <Insets left="210.0" top="168.0" />
                </VBox.margin>

@@ -1,19 +1,17 @@
 package model;
 
-import java.util.ArrayList;
-
 public class UserAccount {
 	
 	private String name;
 	private String password;
 	private String photo;
 	private String gender;
-	private ArrayList<String> career;
+	private String career;
 	private String birthday;
-	private String fBrowser;
+	private String browser;
 
-	public UserAccount(String name, String password, String photo, String gender, ArrayList<String> career,
-			String birthday, String fBrowser) {
+	public UserAccount(String name, String password, String photo, String gender, String career,
+			String birthday, String browser) {
 
 		this.name = name;
 		this.password = password;
@@ -21,7 +19,7 @@ public class UserAccount {
 		this.gender = gender;
 		this.career = career;
 		this.birthday = birthday;
-		this.fBrowser = fBrowser;
+		this.browser = browser;
 	}
 
 	public String getName() {
@@ -56,11 +54,11 @@ public class UserAccount {
 		this.gender = gender;
 	}
 
-	public ArrayList<String> getCareer() {
+	public String getCareer() {
 		return career;
 	}
 
-	public void setCareer(ArrayList<String> career) {
+	public void setCareer(String career) {
 		this.career = career;
 	}
 
@@ -72,12 +70,12 @@ public class UserAccount {
 		this.birthday = birthday;
 	}
 
-	public String getfBrowser() {
-		return fBrowser;
+	public String getBrowser() {
+		return browser;
 	}
 
-	public void setfBrowser(String fBrowser) {
-		this.fBrowser = fBrowser;
+	public void setBrowser(String browser) {
+		this.browser = browser;
 	}
 }
 

@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: E6B8F5;" BorderPane.alignment="CENTER">
@@ -20,7 +19,7 @@
                   <Font size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="400.0" top="30.0" />
+                  <Insets left="300.0" right="40.0" top="30.0" />
                </VBox.margin>
             </Label>
             <ImageView fx:id="userPhoto" fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
@@ -28,7 +27,7 @@
                   <Insets bottom="40.0" left="420.0" top="-33.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Log Out">
+            <Button mnemonicParsing="false" onAction="#loadLogin" style="-fx-background-color: BEBBFA; -fx-border-color: A7A0FA; -fx-background-radius: 500; -fx-border-radius: 500;" text="Log Out">
                <VBox.margin>
                   <Insets left="480.0" top="-80.0" />
                </VBox.margin>

@@ -1,7 +1,7 @@
 package ui;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,8 +22,10 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import model.Classroom;
 import model.UserAccount;
 
@@ -35,7 +38,7 @@ public class ClassroomGUI {
     private TextField txtUserSing;
 
     @FXML
-    private TextField txtPasswordSing;
+    private PasswordField txtPasswordSing;
 	
 	@FXML
     private Label labelNameUser;
@@ -65,7 +68,7 @@ public class ClassroomGUI {
     private CheckBox careerIndustrial;
 
     @FXML
-    private DatePicker txtBirthDay;
+    private DatePicker birthDay;
 
     @FXML
     private TextField txtUsername;
@@ -77,7 +80,7 @@ public class ClassroomGUI {
     private TextField txtPhoto;
 
     @FXML
-    private ComboBox<?> txtFavoriteBrowser;
+    private ComboBox<String> favoriteBrowser;
 
     @FXML
     private TableView<UserAccount> tableViewUserAccount;
@@ -89,20 +92,15 @@ public class ClassroomGUI {
     private TableColumn<UserAccount, String> tableViewGender;
 
     @FXML
-    private TableColumn<UserAccount, ArrayList<String>> tableViewCareer;
+    private TableColumn<UserAccount, String> tableViewCareer;
 
     @FXML
     private TableColumn<UserAccount, String> tableViewBirthday;
 
     @FXML
     private TableColumn<UserAccount, String> tableViewBrowser;
-
-    @FXML
-    void logOut(ActionEvent event) {
-
-    }
 	
-	Classroom classroom;
+	private Classroom classroom;
 	
 	public ClassroomGUI(Classroom cr) {
 		classroom = cr;
@@ -116,9 +114,9 @@ public class ClassroomGUI {
 		tableViewUserAccount.setItems(observableList);
 		tableViewUsername.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("name"));
 		tableViewGender.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("gender"));
-		tableViewCareer.setCellValueFactory(new PropertyValueFactory<UserAccount,ArrayList<String>>("career"));
+		tableViewCareer.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("career"));
 		tableViewBirthday.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("birthday"));
-		tableViewBrowser.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("browser"));
+		tableViewBrowser.setCellValueFactory(new PropertyValueFactory<UserAccount,String>("Browser"));
 	}
 	
 	public void loadLogin() throws IOException{
@@ -141,9 +139,17 @@ public class ClassroomGUI {
 		
 		mainPanel.getChildren().clear();
 		mainPanel.setTop(registerAccount);
+		
+		favoriteBrowser.setPromptText("Select");
+		favoriteBrowser.getItems().addAll("Google","Opera GX","Opera","FireFox");
 	}
 	
 	public void loadAccountList() throws IOException{
+		
+		String messageName = "";
+		String messagePhoto = "";
+		
+		Image image;;
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("account-list.fxml"));
 		
@@ -153,6 +159,15 @@ public class ClassroomGUI {
 		mainPanel.getChildren().clear();
 		mainPanel.setCenter(accountList);
 		initializateTableView();
+		
+		messageName = classroom.searchName(txtUserSing.getText(),txtPasswordSing.getText());
+		messagePhoto = classroom.searchPhoto(txtUserSing.getText(),txtPasswordSing.getText());
+		
+		image = new Image(messagePhoto);
+		
+		userPhoto.setImage(image);
+		
+		labelNameUser.setText(messageName);
 	}
 	
 	public void logInBotton(ActionEvent event) throws IOException {
@@ -187,16 +202,81 @@ public class ClassroomGUI {
 		}
 	}
 	
-	public void createAccount(ActionEvent event) {
+	public String genderUser() {
 		
-		if(txtUsername.getText().equals("") || txtPassword.getText().equals("") || txtPhoto.getText().equals("") || (!genderMale.isSelected() && !genderFemale.isSelected())) {
+		String message = "";
+		
+		if(genderMale.isSelected()) {
+			message = "Male";
+		}
+		else if(genderFemale.isSelected()) {
+			message = "Female";
+		}
+		else if(genderOther.isSelected()) {
+			message = "Other";
+		}
+		
+		return message;
+	}
+	
+	public String careerUsed() {
+		
+		String message = "";
+		
+		if(careerSofware.isSelected()) {
+			message += "Sofware Engineering\n";
+		}
+		if(careerTelematic.isSelected()) {
+			message += "Telematic Engineering\n";
+		}
+		if(careerIndustrial.isSelected()) {
+			message += "Industrial Engineering";
+		}
+		
+		return message;
+	}
+	
+	public void createAccount(ActionEvent event) throws IOException {
+		
+		if(txtUsername.getText().equals("") || txtPassword.getText().equals("") || txtPhoto.getText().equals("") || (!genderMale.isSelected() && !genderFemale.isSelected() && !genderOther.isSelected()) || (!careerSofware.isSelected() && !careerTelematic.isSelected() && !careerIndustrial.isSelected()) || birthDay.getValue() == null || favoriteBrowser.getValue() == null) {
 			
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Validation Error");
+			alert.setTitle("Validaton Error");
 			alert.setHeaderText(null);
-			alert.setContentText("All fields must be filled");
+			alert.setContentText("You must fill each field in the form");
 			
 			alert.showAndWait();
+		}
+		else {
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Acciunt Created");
+			alert.setHeaderText(null);
+			alert.setContentText("The new account has been created");
+			
+			alert.showAndWait();
+			
+			String career = careerUsed();
+			String gender = genderUser();
+			
+			File image = new File(txtPhoto.getText());
+			String location = image.toURI().toString();
+			
+			classroom.addUser(txtUsername.getText(), txtPassword.getText(), location, gender, career, birthDay.getValue().toString(), favoriteBrowser.getValue().toString());
+			
+			loadLogin();
+		}
+	}
+	
+	public void browseBotton(ActionEvent event) throws IOException{
+		
+		FileChooser fileChooser = new FileChooser();
+		
+		fileChooser.setTitle("View Pictures");
+		File file = fileChooser.showOpenDialog(null);
+		
+		if(file != null) {
+			txtPhoto.appendText(file.getAbsolutePath());
 		}
 	}
 }
